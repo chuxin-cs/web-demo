@@ -7,5 +7,13 @@ export default defineConfig({
       name: 'Counter',
       fileName: 'counter',
     },
+    rollupOptions: {
+      external: ['vue'],
+      output: {
+        globals: {
+          vue: 'Vue',
+        },
+      },
+    }
   },
 })

@@ -17,10 +17,15 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "build:types": "vue-tsc --noEmit && vite build --mode fullTypes"
   },
   "devDependencies": {
     "typescript": "~5.7.3",
-    "vite": "^6.1.1"
+    "vite": "^6.1.1",
+    "vue-tsc": "^2.2.8"
+  },
+  "dependencies": {
+    "vue": "^3.5.13"
   }
 }
