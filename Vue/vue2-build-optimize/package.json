@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "build:module": "vue-cli-service build --target lib --formats umd-min --name chuxin.[hash] src\\main.js",
     "build:vite-module": "vite build --config vite.config.js",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build:components": "vue-cli-service build --target lib --formats umd-min --name z-hello-world G:\\2025\\demo\\web-demo\\Vue\\vue2-build-optimize\\src\\components\\HelloWorld.vue"
   },
   "dependencies": {
     "core-js": "^3.8.3",
