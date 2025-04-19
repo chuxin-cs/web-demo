@@ -1,16 +1,15 @@
 {
   "name": "demo-api-study",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node ./scripts/index.js",
+    "start": "tsc ./src/index.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.8.1",
   "dependencies": {
+    "cac": "^6.7.14",
+    "cross-spawn": "^7.0.6",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
 }
