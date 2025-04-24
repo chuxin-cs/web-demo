@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "outDir": "./dist",/** 输出目录 **/
-    "target": "ES2015",/** 编译目标 **/
-  }
-}
