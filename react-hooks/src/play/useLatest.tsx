@@ -14,7 +14,7 @@ export default function UseLatestPage() {
         <CounterFix/>
       </div>
       <div>
-        <h2>推断我的验证</h2>
+        <h2>关于 useEffect + 定时器 产生闭包的问题</h2>
         {/* <DemoTest/> */}
       </div>
 
