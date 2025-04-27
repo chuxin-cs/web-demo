@@ -1,14 +1,15 @@
-import { useState } from 'react'
-
 // 引入demo
 import UseLatestPage from "./play/useLatest";
+import UseUnmountPage from "./play/useUnmount";
 
 function App() {
 
-  return (
-    <>
-      <UseLatestPage/>
-    </>
-  )
+    return (
+        <>
+            <UseLatestPage/>
+            <UseUnmountPage/>
+        </>
+    )
 }
+
 export default App
