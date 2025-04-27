@@ -1,46 +1,36 @@
 import React from 'react';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
+import type { MenuProps } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
 const items: MenuItem[] = [
   {
-    key: 'sub2',
-    label: 'Navigation 2',
+    key: 'hooks',
+    label: 'ahooks',
     icon: <SettingOutlined />,
     children: [
-      { key: '1', label: 'Option 9' },
-      { key: '2', label: 'Option 10' },
-      { key: '3', label: 'Option 11' },
-      { key: '4', label: 'Option 12' },
+      { key: 'useLatest', label: 'useLatest' },
+      { key: 'useUnmount', label: 'useUnmount' },
     ],
   },
-  {
-    key: 'sub4',
-    label: 'Navigation Three',
-    icon: <SettingOutlined />,
-    children: [
-      { key: '9', label: 'Option 9' },
-      { key: '10', label: 'Option 10' },
-      { key: '11', label: 'Option 11' },
-      { key: '12', label: 'Option 12' },
-    ],
-  }
 ];
 
 const Layouts: React.FC = () => {
+  const navigate = useNavigate();
   const onClick: MenuProps['onClick'] = (e) => {
-    console.log('click ', e);
+    // 根据点击的菜单项 key 进行路由跳转
+    navigate(`/${e.key}`);
   };
 
   return (
     <Menu
       onClick={onClick}
       style={{ width: 256 }}
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['sub1']}
+      defaultSelectedKeys={['useLatest']}
+      defaultOpenKeys={['hooks']}
       mode="inline"
       items={items}
     />
