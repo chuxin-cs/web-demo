@@ -1,14 +1,8 @@
-// 引入demo
-import UseLatestPage from "./play/useLatest";
-import UseUnmountPage from "./play/useUnmount";
+import Router from "./router"
 
 function App() {
-
     return (
-        <>
-            <UseLatestPage/>
-            <UseUnmountPage/>
-        </>
+        <Router />
     )
 }
 
