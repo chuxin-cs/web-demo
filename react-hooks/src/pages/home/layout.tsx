@@ -1,22 +1,11 @@
-import React from 'react';
 import { Menu } from 'antd';
+import {useEffect,useMemo} from 'react';
 import type { MenuProps } from 'antd';
+import {getRoutes} from "@/router/routes"
 import { useNavigate } from 'react-router-dom';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 type MenuItem = Required<MenuProps>['items'][number];
-
-const items: MenuItem[] = [
-  {
-    key: 'hooks',
-    label: 'ahooks',
-    icon: <SettingOutlined />,
-    children: [
-      { key: 'useLatest', label: 'useLatest' },
-      { key: 'useUnmount', label: 'useUnmount' },
-    ],
-  },
-];
 
 const Layouts: React.FC = () => {
   const navigate = useNavigate();
@@ -24,6 +13,24 @@ const Layouts: React.FC = () => {
     // 根据点击的菜单项 key 进行路由跳转
     navigate(`/${e.key}`);
   };
+  
+  const children = useMemo(() => {
+    return getRoutes().map((item) => ({
+      key: item.path,
+      label: item.path,
+    }));
+  }, []);
+
+  const items: MenuItem[] = [
+    {
+      key: 'hooks',
+      label: 'ahooks',
+      icon: <SettingOutlined />,
+      children,
+    },
+  ];
+
+
 
   return (
     <Menu
