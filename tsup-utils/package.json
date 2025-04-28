@@ -1,0 +1,17 @@
+{
+  "name": "tsup-utils",
+  "version": "1.0.0",
+  "description": "基于 tsup 构建 utils 工具库",
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "tsup"
+  ],
+  "author": "chuxin",
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}
