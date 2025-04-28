@@ -1,5 +1,5 @@
 import LayoutPage from "@/layout"
-const pages = import.meta.glob("./pages/**/*.tsx", { eager: true })
+const pages = import.meta.glob("../pages/*.tsx", { eager: true })
 
 // 用于存储子路由的数组
 export const childrenRoutes = [];
