@@ -1,9 +1,16 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
   <div>
-    <el-button>111</el-button>
+    <router-view></router-view>
   </div>
 </template>
+
+<style lang="scss">
+*{margin: 0;padding: 0;}
+html,body{
+  height: 100%;
+  width: 100%;
+}
+</style>
