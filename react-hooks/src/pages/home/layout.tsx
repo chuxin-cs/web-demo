@@ -30,13 +30,16 @@ const Layouts: React.FC = () => {
     },
   ];
 
-
+  const hash = window.location.hash;
+  // 去除 hash 中的 / 符号
+  const processedHash = hash.substring(1).replace(/^\//, ''); 
+  const defaultSelectedKeys = processedHash ? [processedHash] : ['useLatest'];
 
   return (
     <Menu
       onClick={onClick}
       style={{ width: 256 }}
-      defaultSelectedKeys={['useLatest']}
+      defaultSelectedKeys={defaultSelectedKeys}
       defaultOpenKeys={['hooks']}
       mode="inline"
       items={items}
