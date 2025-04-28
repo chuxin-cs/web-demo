@@ -7,20 +7,19 @@ git clone https://github.com/chuxin-cs/web-demo.git
 ```
 
 ## ✨ 项目列表
-### React
+### 1.React
 - [react-api](https://github.com/chuxin-cs/web-demo/tree/master/react-api) 用于学习 React 的 API 以及 React 与 Vue 的区别
 - [react-hooks](https://github.com/chuxin-cs/web-demo/tree/master/react-hooks) 用于学习 React Hooks
 - [react-router-dom-v6](https://github.com/chuxin-cs/web-demo/tree/master/react-router-dom-v6) 用于学习 React Router Dom v6 的 API
 - [react-zustand](https://github.com/chuxin-cs/web-demo/tree/master/react-zustand) 用于学习 Zustand 的 API
-### Vue
+### 2.Vue
 - [vue-api](https://github.com/chuxin-cs/web-demo/tree/master/vue-api) 用于学习 Vue3 的 API 以及 Vue3 与 Vue2 的区别
 - [vue-hooks](https://github.com/chuxin-cs/web-demo/tree/master/vue-hooks) 用于学习 Vue3 Hooks
 - [vue-pinia](https://github.com/chuxin-cs/web-demo/tree/master/vue-pinia) 用于学习 Vue3 Pinia 的 API
-### Vite
+### 3.前端工程化
 - [vite-api](https://github.com/chuxin-cs/web-demo/tree/master/vite-api) 用于学习 Vite 的 API
 - [vite-ui](https://github.com/chuxin-cs/web-demo/tree/master/vite-ui) 用于学习 Vite 构建 UI 组件库
-### Rollup
-- [rollup-api](https://github.com/chuxin-cs/web-demo/tree/master/rollup-api) 用于学习 Rollup 的 API
+- [tsup-utils](https://github.com/chuxin-cs/web-demo/tree/master/tsup-utils) 用于学习 Tsup 构建 Utils 工具库
 - [rollup-utils](https://github.com/chuxin-cs/web-demo/tree/master/rollup-utils) 用于学习 Rollup 构建 Utils 工具库
 
 ## Git 贡献提交规范
