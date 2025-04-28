@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 type MenuItem = Required<MenuProps>['items'][number];
-
+// ============================================================== 当前文件只做一些简单的渲染，重点放到了hooks，当前文件就不做过多封装
 const Layouts: React.FC = () => {
   const navigate = useNavigate();
   const onClick: MenuProps['onClick'] = (e) => {
