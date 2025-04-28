@@ -1,5 +1,3 @@
-import {createHashRouter,Outlet} from "react-router-dom"
-
 import HomePage from "../pages/home";
 // 使用 Vite 的 import.meta.glob 实现自动导入
 const pages = import.meta.glob('../play/*.tsx', { eager: true });
