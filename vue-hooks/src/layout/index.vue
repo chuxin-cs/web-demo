@@ -3,9 +3,9 @@
     <!-- nav -->
     <div class="nav">
       <el-menu :default-active="defaultActive" :default-openeds="defaultOpeneds" router class="el-menu-vertical-demo">
-        <el-sub-menu index="api">
+        <el-sub-menu index="hooks">
           <template #title>
-            <span>组合式API</span>
+            <span>vueuse</span>
           </template>
           <el-menu-item v-for="item in menuList" :index="item.path" :key="item.path">{{ item.path }}</el-menu-item>
         </el-sub-menu>

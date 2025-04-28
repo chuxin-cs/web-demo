@@ -8,3 +8,5 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes : routes as unknown as RouteRecordRaw[]
 })
+
+export default router;
