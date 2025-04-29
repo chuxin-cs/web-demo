@@ -1,13 +1,28 @@
 {
-  "name": "rollup-utils",
+  "name": "@qiaojun/utils",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "📦📦📦 A is utils Library",
+  "main": "dist/utils.cjs.js",
+  "module": "dist/utils.es.js",
+  "browser": "dist/utils.umd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "rimraf dist && rollup -wc",
+    "build": "rimraf dist && rollup -c"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "rollup",
+    "utils"
+  ],
+  "author": "chuxin",
   "license": "ISC",
-  "packageManager": "pnpm@10.8.1"
+  "packageManager": "pnpm@10.8.1",
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "rimraf": "^6.0.1"
+  },
+  "dependencies": {
+    "rollup": "^4.40.1"
+  }
 }
