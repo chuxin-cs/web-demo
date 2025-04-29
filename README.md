@@ -17,8 +17,6 @@ git clone https://github.com/chuxin-cs/web-demo.git
 - [vue-hooks](https://github.com/chuxin-cs/web-demo/tree/master/vue-hooks) 用于学习 Vue3 Hooks
 - [vue-pinia](https://github.com/chuxin-cs/web-demo/tree/master/vue-pinia) 用于学习 Vue3 Pinia 的 API
 ### 3. 前端工程化
-- [vite-api](https://github.com/chuxin-cs/web-demo/tree/master/vite-api) 用于学习 Vite 的 API
-- [vite-ui](https://github.com/chuxin-cs/web-demo/tree/master/vite-ui) 用于学习 Vite 构建 UI 组件库
 - [tsup-utils](https://github.com/chuxin-cs/web-demo/tree/master/tsup-utils) 用于学习 Tsup 构建 Utils 工具库
 - [rollup-utils](https://github.com/chuxin-cs/web-demo/tree/master/rollup-utils) 用于学习 Rollup 构建 Utils 工具库
 
