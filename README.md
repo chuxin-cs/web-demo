@@ -19,6 +19,7 @@ git clone https://github.com/chuxin-cs/web-demo.git
 ### 3. 前端工程化
 - [tsup-utils](https://github.com/chuxin-cs/web-demo/tree/master/tsup-utils) 用于学习 Tsup 构建 Utils 工具库
 - [rollup-utils](https://github.com/chuxin-cs/web-demo/tree/master/rollup-utils) 用于学习 Rollup 构建 Utils 工具库
+- [docker-vue-deploy](https://github.com/chuxin-cs/web-demo/tree/master/docker-vue-deploy) 用于学习 Docker 部署 Vue 项目
 
 ## Git 贡献提交规范
 
