@@ -18,7 +18,14 @@ const Layouts: React.FC = () => {
   };
   
   const children = useMemo(() => {
-    return getRoutes().map((item) => ({
+    return getRoutes().api.map((item) => ({
+      key: item.path,
+      label: item.path,
+    }));
+  }, []);
+
+  const demoChildren = useMemo(() => {
+    return getRoutes().demo.map((item) => ({
       key: item.path,
       label: item.path,
     }));
@@ -27,9 +34,15 @@ const Layouts: React.FC = () => {
   const items: MenuItem[] = [
     {
       key: 'hooks',
-      label: 'ahooks',
+      label: 'react api',
       icon: <SettingOutlined />,
       children,
+    },
+    {
+      key: 'demo',
+      label: 'demo',
+      icon: <SettingOutlined />,
+      children:demoChildren,
     },
   ];
 

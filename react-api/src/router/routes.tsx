@@ -1,30 +1,34 @@
+import {getPages} from "@/utils"
 import LayoutPage from "@/layout"
-const pages = import.meta.glob("../pages/*.tsx", { eager: true })
 
-// 用于存储子路由的数组
-export const childrenRoutes = [];
+// react api 路由配置
+const pages = import.meta.glob("../pages/api/*.tsx", { eager: true })
+export const childrenApiRoutes = getPages(pages);
 
-// 遍历 pages 对象
-for (const path in pages) {
-  // 提取文件名，例如从 '../play/useLatest.tsx' 提取 'useLatest'
-  const fileName = path.split('/').pop()?.replace('.tsx', '');
-  if (fileName) {
-    const PageComponent = pages[path]?.default;
-    childrenRoutes.push({
-      path: fileName,
-      element: <PageComponent />
-    });
-  }
-}
+
+// react demo 路由配置
+import TodoList from "@/pages/demo/TodoList/index.tsx";
+const childrenDemoRoutes = [
+  {
+    path: "TodoList",
+    element: <TodoList />,
+  },
+]
 
 export const getRoutes = () => {
-  return childrenRoutes;
+  return {
+    api: childrenApiRoutes,
+    demo: childrenDemoRoutes,
+  };
 }
 
 export const routes = [
   {
     path: "/",
     element: <LayoutPage />,
-    children: childrenRoutes
+    children: [
+      ...childrenApiRoutes,
+      ...childrenDemoRoutes,
+    ]
   }
 ]
