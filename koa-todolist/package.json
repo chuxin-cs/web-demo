@@ -1,21 +1,26 @@
 {
   "name": "koa-todolist",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "koa todo list",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js",
+    "dev": "npm run start"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "koa",
+    "todolist"
+  ],
+  "author": "chuxin",
   "license": "ISC",
-  "packageManager": "pnpm@10.8.1",
   "dependencies": {
+    "@koa/cors": "^5.0.0",
     "dotenv": "^16.5.0",
     "koa": "^3.0.0",
     "koa-bodyparser": "^4.4.1",
     "koa-router": "^13.0.1",
+    "koa-static": "^5.0.0",
     "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10",
     "sequelize": "^6.37.7"
   }
 }
