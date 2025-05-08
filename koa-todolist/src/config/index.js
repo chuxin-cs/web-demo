@@ -11,6 +11,9 @@ const Config = {
   // 应用相关配置
   APP_PORT: env.APP_PORT || 3000,
   APP_HOST: env.APP_HOST || 'localhost',
+
+  // 其他
+  STATIC_PATH: env.STATIC_PATH,
 }
 
 module.exports = Config

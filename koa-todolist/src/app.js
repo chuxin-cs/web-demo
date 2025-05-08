@@ -4,13 +4,13 @@ const cors = require('@koa/cors');
 const KoaStatic = require('koa-static');
 const bodyParser = require('koa-bodyparser');
 
-const Config = require('./src/config');
+const Config = require('./config');
 
 function createApp() {
   // 实例化koa
   const app = new Koa();
   // 设置静态资源目录
-  app.use(KoaStatic(path.join(__dirname, '../static')));
+  app.use(KoaStatic(path.join(__dirname, Config.STATIC_PATH)));
   // 跨域
   app.use(cors());
   // 解析请求体
