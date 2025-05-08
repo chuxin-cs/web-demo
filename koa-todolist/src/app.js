@@ -5,6 +5,7 @@ const KoaStatic = require('koa-static');
 const bodyParser = require('koa-bodyparser');
 
 const Config = require('./config');
+const initRouter = require('./router');
 
 function createApp() {
   // 实例化koa
@@ -15,6 +16,8 @@ function createApp() {
   app.use(cors());
   // 解析请求体
   app.use(bodyParser());
+  // 初始化路由
+  initRouter(app);
   // 返回实例
   return app;
 }
