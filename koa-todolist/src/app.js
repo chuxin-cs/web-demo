@@ -1,13 +1,14 @@
 const Koa = require('koa');
 const path = require('path');
+const cors = require('@koa/cors');
 const KoaStatic = require('koa-static');
 const bodyParser = require('koa-bodyparser');
-const cors = require('@koa/cors');
+
+const Config = require('./src/config');
 
 function createApp() {
   // 实例化koa
   const app = new Koa();
-  console.log(path.join(__dirname, '../static'),"path.join(__dirname, '../static')")
   // 设置静态资源目录
   app.use(KoaStatic(path.join(__dirname, '../static')));
   // 跨域
@@ -20,9 +21,8 @@ function createApp() {
 
 const run = async () => {
   const app = await createApp()
-  const APP_PORT = process.env.APP_PORT || 3000;
-  app.listen(APP_PORT, () => {
-    console.log(`项目已启动，访问地址: http://localhost:${APP_PORT}`);
+  app.listen(Config.APP_PORT, () => {
+    console.log(`项目已启动，访问地址: http://${Config.APP_HOST}:${Config.APP_PORT}`);
   })
 };
 
