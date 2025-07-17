@@ -1,0 +1,13 @@
+{
+  "a": {
+    "path": "G:\\chenqiaojun\\qiaojun\\2025-07\\bot-manage-web",
+    "command": "npm run dev",
+    "node": "14.18.2"
+  },
+  "b": {
+    "path": "G:\\2025\\vue\\vue-demo\\demo-hello-world",
+    "command": "npm run dev",
+    "node": "22.16.0",
+    "port": 3000
+  }
+}

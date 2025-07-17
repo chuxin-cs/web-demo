@@ -1,0 +1,16 @@
+{
+  "name": "demo-nvm-project",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "pm": "./index.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cross-spawn": "^7.0.6",
+    "minimist": "^1.2.8"
+  }
+}
