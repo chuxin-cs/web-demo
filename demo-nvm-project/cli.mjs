@@ -54,10 +54,27 @@ export async function startProject(projectName) {
     }
   });
 
-  // 存储进程引用
-  projectProcesses.set(projectName, child);
 
-  child.unref(); // 允许主进程退出时子进程继续运行
+
+    // ✅ 添加进程事件监听
+  child.stdout.on('data', data => process.stdout.write(`[${projectName}] ${data}`));
+  child.stderr.on('data', data => process.stderr.write(`[${projectName}-ERR] ${data}`));
+  
+  child.on('error', (err) => {
+    console.error(`❌ ${projectName}启动失败:`, err.message);
+    projectProcesses.delete(projectName);
+  });
+  
+    child.on('exit', (code) => {
+    if (code !== 0) {
+      console.error(`❌ ${projectName}异常退出 (${code})`);
+    }
+    projectProcesses.delete(projectName);
+  });
+
+    // 存储进程引用
+  projectProcesses.set(projectName, child);
+  // child.unref(); // 允许主进程退出时子进程继续运行
 
   console.log(`
 ✅ 项目 ${projectName} 已启动:
