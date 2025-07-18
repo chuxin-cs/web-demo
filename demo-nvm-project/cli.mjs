@@ -38,15 +38,19 @@ export async function startProject(projectName) {
     ? ['cmd.exe', ['/c', fullCommand]]
     : ['bash', ['-c', fullCommand]];
 
+  // 使用 spawn 方法创建一个子进程来执行命令
+  // shell: 要执行的 shell 程序（Windows 为 cmd.exe，Unix 为 bash）
+  // args: 传递给 shell 程序的参数
+  // 第三个参数是配置对象，用于设置子进程的运行环境和行为
   const child = spawn(shell, args, {
-    cwd: project.path,
-    stdio: 'inherit',
-    detached: true,
-    shell: true,
+    cwd: project.path, // 设置子进程的工作目录为项目路径
+    stdio: 'inherit',  // 继承父进程的标准输入、输出和错误流
+    detached: true,    // 将子进程设置为独立进程组，允许主进程退出后子进程继续运行
+    shell: true,       // 使用 shell 模式执行命令
     env: {
-      ...process.env,
-      PATH: process.env.PATH, // 保留环境变量
-      FORCE_COLOR: 'true'     // 强制彩色输出
+      ...process.env,  // 继承父进程的所有环境变量
+      PATH: process.env.PATH, // 保留环境变量中的 PATH 路径
+      FORCE_COLOR: 'true'     // 强制启用彩色输出
     }
   });
 
