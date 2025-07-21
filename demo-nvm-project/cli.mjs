@@ -1,8 +1,23 @@
-import os from 'os';
-import path from 'path';
 import { spawn } from 'child_process';
 import { readFile } from 'fs/promises';
-import { getCurrentDir, createPlatformCommand } from './utils/index.mjs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// 获取当前 ESM 模块的目录路径
+export function getCurrentDir(importMeta) {
+  return dirname(fileURLToPath(importMeta.url));
+}
+
+// 获取 NVM 路径
+export function getNvmPath() {
+  return `${process.env.APPDATA}\\nvm\\nvm.exe`;
+}
+
+// 创建 Windows 命令
+export function createWindowsCommand(command) {
+  return `"${getNvmPath()}" use ${command.node} && ${command.command}`;
+}
 
 // 全局存储子进程
 const projectProcesses = new Map();
@@ -27,46 +42,25 @@ export async function startProject(projectName) {
     throw new Error(`项目 ${projectName} 未配置`);
   }
 
-  // 创建跨平台命令
-  const fullCommand = createPlatformCommand({
+  // 创建 Windows 命令
+  const fullCommand = createWindowsCommand({
     node: project.node,
     command: project.command
   });
 
-  // 根据平台确定如何执行命令
-  const [shell, ...args] = os.platform() === 'win32'
-    ? ['cmd.exe', ['/c', fullCommand,{
-      cwd: project.path,
-      stdio: 'pipe',  // 改为管道模式捕获输出
-      detached: true,
-      windowsHide: true, // 隐藏Windows上的终端窗口
-      env: {
-        ...process.env,
-        FORCE_COLOR: '1', // 数值型更兼容
-      },
-      shell: false  // 显式关闭shell模式避免二次解析
-    }]]
-    : ['bash', ['-c', fullCommand]];
-
   // 使用 spawn 方法创建一个子进程来执行命令
-  // shell: 要执行的 shell 程序（Windows 为 cmd.exe，Unix 为 bash）
-  // args: 传递给 shell 程序的参数
-  // 第三个参数是配置对象，用于设置子进程的运行环境和行为
-  const child = spawn(shell, args, {
-    cwd: project.path, // 设置子进程的工作目录为项目路径
-    stdio: 'inherit',  // 继承父进程的标准输入、输出和错误流
-    detached: true,    // 将子进程设置为独立进程组，允许主进程退出后子进程继续运行
-    shell: true,       // 使用 shell 模式执行命令
+  const child = spawn('cmd.exe', ['/c', fullCommand], {
+    cwd: project.path,
+    stdio: 'pipe',
+    detached: true,
+    windowsHide: true,
     env: {
-      ...process.env,  // 继承父进程的所有环境变量
-      PATH: process.env.PATH, // 保留环境变量中的 PATH 路径
-      FORCE_COLOR: 'true'     // 强制启用彩色输出
+      ...process.env,
+      FORCE_COLOR: '1',
     }
   });
 
-
-
-    // ✅ 添加进程事件监听
+  // 添加进程事件监听
   child.stdout.on('data', data => process.stdout.write(`[${projectName}] ${data}`));
   child.stderr.on('data', data => process.stderr.write(`[${projectName}-ERR] ${data}`));
   
@@ -75,16 +69,16 @@ export async function startProject(projectName) {
     projectProcesses.delete(projectName);
   });
   
-    child.on('exit', (code) => {
+  child.on('exit', (code) => {
     if (code !== 0) {
       console.error(`❌ ${projectName}异常退出 (${code})`);
     }
     projectProcesses.delete(projectName);
   });
 
-    // 存储进程引用
+  // 存储进程引用
   projectProcesses.set(projectName, child);
-  // child.unref(); // 允许主进程退出时子进程继续运行
+  child.unref();
 
   console.log(`
 ✅ 项目 ${projectName} 已启动:
@@ -105,14 +99,8 @@ export function stopProject(projectName) {
     throw new Error(`项目 ${projectName} 未运行`);
   }
 
-  if (os.platform() === 'win32') {
-    // Windows 专用处理
-    spawn('taskkill', ['/F', '/T', '/PID', child.pid]);
-  } else {
-    // Unix 系统处理
-    process.kill(-child.pid);
-  }
-
+  // Windows 专用处理
+  spawn('taskkill', ['/F', '/T', '/PID', child.pid]);
   projectProcesses.delete(projectName);
   console.log(`🛑 项目 ${projectName} 已停止`);
 }
@@ -134,4 +122,4 @@ export function stopAllProjects() {
   for (const [projectName] of projectProcesses) {
     stopProject(projectName);
   }
-}
+}  
