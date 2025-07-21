@@ -35,7 +35,17 @@ export async function startProject(projectName) {
 
   // 根据平台确定如何执行命令
   const [shell, ...args] = os.platform() === 'win32'
-    ? ['cmd.exe', ['/c', fullCommand]]
+    ? ['cmd.exe', ['/c', fullCommand,{
+      cwd: project.path,
+      stdio: 'pipe',  // 改为管道模式捕获输出
+      detached: true,
+      windowsHide: true, // 隐藏Windows上的终端窗口
+      env: {
+        ...process.env,
+        FORCE_COLOR: '1', // 数值型更兼容
+      },
+      shell: false  // 显式关闭shell模式避免二次解析
+    }]]
     : ['bash', ['-c', fullCommand]];
 
   // 使用 spawn 方法创建一个子进程来执行命令
